@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="border rounded mt-5 p-5 text-center">
+    <h1>Creation form</h1>
+    <%= simple_form_for [@fighter] do |f| %>
+      <%= f.input :name %>
+      <%= f.input :health %>
+      <%= f.input :power %>
+      <%= f.submit "create your fighter", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
