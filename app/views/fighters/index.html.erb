@@ -14,8 +14,10 @@
       </div>
       <% end %>
     </div>
-    <div class="mt-5">
-      <a href="" class="btn btn-danger"><i class="fa fa-plus" aria-hidden="true"></i> New fighter</a>
+    <div class="mt-5 btn btn-danger">
+      <%= link_to new_fighter_path, style: 'color:#F4F4F4' do %>
+      <i class="fa fa-plus" aria-hidden="true"> New fighter</i>
+      <% end %>
     </div>
   </div>
 </div>
