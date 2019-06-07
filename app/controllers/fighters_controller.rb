@@ -9,6 +9,7 @@ class FightersController < ApplicationController
 
   def create
     @fighter = Fighter.new(fighter_params)
+    @fighter.name = @fighter.name.downcase.capitalize
     if @fighter.save
       redirect_to fighters_path
     else
