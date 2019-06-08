@@ -1,11 +1,14 @@
 <div class="container">
   <div class="border rounded mt-5 p-5 text-center">
-    <h1>Creation form</h1>
+    <div class="mb-5">
+      <h1><i class="fas fa-skull-crossbones"></i> Champions Factory <i class="fas fa-skull-crossbones"></i></h1>
+      <h4>Create your own fighter !</h4>
+    </div>
     <%= simple_form_for [@fighter] do |f| %>
-      <%= f.input :name %>
-      <%= f.input :health %>
-      <%= f.input :power %>
-      <%= f.submit "create your fighter", class: "btn btn-primary" %>
+    <%= f.input :name %>
+    <%= f.input :health, default: 100, collection: (100..150) %>
+    <%= f.input :power, default: 10, collection: (10..50) %>
+    <%= f.submit "create your fighter", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
