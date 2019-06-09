@@ -31,6 +31,12 @@ class FightersController < ApplicationController
     end
   end
 
+  def destroy
+    @fighter = Fighter.find(params[:id])
+    @fighter.destroy
+    redirect_to fighters_path
+  end
+
   private
 
   def fighter_params
