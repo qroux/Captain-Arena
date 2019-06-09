@@ -8,8 +8,16 @@
         <div class="card-body">
           <h5 class="card-title"><%= fighter.name %></h5>
           <p class="card-text">Health: <%= fighter.health %> <br>Power: <%= fighter.power %> </p>
-          <a href="#" class="btn btn-primary">Customize</a>
-          <a href="" class="btn "><i class="fa fa-trash" aria-hidden="true"></i></a>
+          <div class="mt-5 btn btn-secondary">
+            <%= link_to edit_fighter_path(fighter), style: 'color:#F4F4F4' do %>
+            <i class="fas fa-tools"> Edit </i>
+            <% end %>
+          </div>
+          <div class="mt-5 btn btn-secondary">
+            <%= link_to fighter_path(fighter), method: :delete, data: { confirm: "Are you sure?" }, style: 'color:#F4F4F4' do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+          </div>
         </div>
       </div>
       <% end %>
