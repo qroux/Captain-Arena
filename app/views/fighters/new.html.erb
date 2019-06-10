@@ -8,6 +8,7 @@
     <%= f.input :name %>
     <%= f.input :health, default: 100, collection: (100..150) %>
     <%= f.input :power, default: 10, collection: (10..50) %>
+    <%= f.input :photo %>
     <%= f.submit "Create your fighter", class: "btn btn-primary" %>
     <% end %>
   </div>
