@@ -1,5 +1,22 @@
 <div class="container">
   <div class="border rounded mt-5 p-5 text-center">
     <%= @fight.player.name %> VS <%= @fight.opponent.name %>
+    <div>
+      <ul class="list-unstyled text-left">
+        <li><%= @fight.player.name %></li>
+        <% @player_turns.each do |player_turn| %>
+        <li>- <%= player_turn %> dmg</li>
+        <% end %>
+      </ul>
+      <ul class="list-unstyled text-right">
+        <li><%= @fight.opponent.name %></li>
+        <% @opponent_turns.each do |opponent_turn| %>
+        <li>- <%= opponent_turn %> dmg</li>
+        <% end %>
+      </ul>
+    </div>
+    <div>
+      <h3>Winner : <%= @winner.name %>!</h3>
+    </div>
   </div>
 </div>
