@@ -3,6 +3,10 @@ class FightsController < ApplicationController
     @fights = Fight.all
   end
 
+  def show
+    @fight = Fight.find(params[:id])
+  end
+
   def new
     @fight = Fight.new
     @fighters = Fighter.all
@@ -14,7 +18,7 @@ class FightsController < ApplicationController
     @fight.player = Fighter.find_by(id: fight_params[:player])
     @fight.opponent = Fighter.find_by(id: fight_params[:opponent])
     if @fight.save
-      redirect_to fights_path
+      redirect_to fight_path(@fight)
     else
       render :new
     end
@@ -23,6 +27,6 @@ class FightsController < ApplicationController
   private
 
   def fight_params
-    params.require(:fight).permit(:player, :opponent)
+    params.require(:fight).permit(:player, :opponent, :id)
   end
 end
