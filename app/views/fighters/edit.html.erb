@@ -8,6 +8,7 @@
     <%= f.input :name %>
     <%= f.input :health, collection: (100..150) %>
     <%= f.input :power, collection: (10..50) %>
+    <%= f.input :photo %>
     <%= f.submit "Update your fighter", class: "btn btn-primary" %>
     <% end %>
   </div>

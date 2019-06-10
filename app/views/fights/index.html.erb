@@ -1,11 +1,13 @@
 <div class="container">
   <div class="border rounded mt-5 p-5 text-center">
     <h1><i class="fas fa-skull-crossbones"></i> Fights history <i class="fas fa-skull-crossbones"></i></h1>
-    <div class="d-flex justify-content-around">
+    <div class="d-flex flex-wrap justify-content-between">
       <% @fights.each do |fight| %>
         <%= link_to fight_path(fight), style: 'color:#000000' do %>
           <div class="card mt-5" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-img-top" >
+              <%= cl_image_tag fight.player.photo, height: 300, width: 250, crop: :fill %>
+            </div>
             <div class="card-body">
               <h5 class="card-title"><%= fight.player.name %>
               VS <%= fight.opponent.name %>
