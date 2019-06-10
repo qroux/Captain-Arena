@@ -1,10 +1,12 @@
 <div class="container">
   <div class="border rounded mt-5 p-5 text-center">
     <h1><i class="fas fa-skull-crossbones"></i> Fighter List <i class="fas fa-skull-crossbones"></i></h1>
-    <div class="d-flex justify-content-around">
+    <div class="d-flex flex-wrap justify-content-between">
       <% @fighters.each do |fighter| %>
       <div class="card mt-5" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-img-top" >
+          <%= cl_image_tag fighter.photo, height: 300, width: 250, crop: :fill %>
+        </div>
         <div class="card-body">
           <h5 class="card-title"><%= fighter.name %></h5>
           <p class="card-text">Health: <%= fighter.health %> <br>Power: <%= fighter.power %> </p>
