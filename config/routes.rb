@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
   resources :fighters, only: [:index, :new, :create, :edit, :update, :destroy] do
   end
+
+  resources :fights, only: [:index, :new, :create] do
+  end
 end
