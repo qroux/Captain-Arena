@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="border rounded mt-5 p-5 text-center">
+    <div class="mb-5">
+      <h1><i class="fas fa-skull-crossbones"></i> Choose the two opponents <i class="fas fa-skull-crossbones"></i></h1>
+      <h4> Prepare to fight !</h4>
+    </div>
+    <%= simple_form_for [@fight] do |f| %>
+    <%= f.input :player, collection: @fighters %>
+    <%= f.input :opponent, collection: @fighters %>
+    <%= f.submit "Enter the arena!", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
