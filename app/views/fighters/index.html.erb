@@ -22,10 +22,15 @@
       </div>
       <% end %>
     </div>
-    <div class="mt-5 btn btn-danger">
-      <%= link_to new_fighter_path, style: 'color:#F4F4F4' do %>
-      <i class="fa fa-plus" aria-hidden="true"> New fighter</i>
-      <% end %>
-    </div>
+    <%= link_to new_fighter_path, style: 'color:#F4F4F4' do %>
+      <div class="mt-5 btn btn-success">
+        <i class="fa fa-plus"> New fighter</i>
+      </div>
+    <% end %>
+    <%= link_to new_fight_path, style: 'color:#F4F4F4' do %>
+      <div class="mt-5 btn btn-danger">
+        <i class="fa fa-plus"> New fight</i>
+      </div>
+    <% end %>
   </div>
 </div>
