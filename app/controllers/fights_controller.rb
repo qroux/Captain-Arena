@@ -31,6 +31,7 @@ class FightsController < ApplicationController
   def create
     # @fight = Fight.new(fight_params) doesn't work, type mismatch, expect id, receive integer or string
     @fight = Fight.new
+    @fighters = Fighter.all #fix simple_form buf when render :new
     @fight.player = Fighter.find_by(id: fight_params[:player])
     @fight.opponent = Fighter.find_by(id: fight_params[:opponent])
     if @fight.save

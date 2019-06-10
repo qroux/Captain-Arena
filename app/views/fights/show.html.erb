@@ -1,22 +1,25 @@
 <div class="container">
   <div class="border rounded mt-5 p-5 text-center">
-    <%= @fight.player.name %> VS <%= @fight.opponent.name %>
+    <h1><%= @fight.player.name %> VS <%= @fight.opponent.name %></h1>
     <div>
       <ul class="list-unstyled text-left">
-        <li><%= @fight.player.name %></li>
+        <h2><%= @fight.player.name %></h2>
         <% @player_turns.each do |player_turn| %>
         <li>- <%= player_turn %> dmg</li>
         <% end %>
       </ul>
       <ul class="list-unstyled text-right">
-        <li><%= @fight.opponent.name %></li>
+        <h2><%= @fight.opponent.name %></h2>
         <% @opponent_turns.each do |opponent_turn| %>
         <li>- <%= opponent_turn %> dmg</li>
         <% end %>
       </ul>
     </div>
     <div>
-      <h3>Winner : <%= @winner.name %>!</h3>
+      <h2>Winner : <%= @winner.name %>!</h2>
+    </div>
+    <div class="btn btn-primary mt-5">
+      <%= link_to "Return", fights_path, style: "color: #F4F4F4"  %>
     </div>
   </div>
 </div>
