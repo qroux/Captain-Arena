@@ -5,6 +5,22 @@ class FightsController < ApplicationController
 
   def show
     @fight = Fight.find(params[:id])
+    @player = @fight.player
+    @opponent = @fight.opponent
+    @player_turns = @fight.player_turns
+    @opponent_turns = @fight.opponent_turns
+
+    if @player_turns.empty?
+      until @player_turns.sum >= @opponent.health || @opponent_turns.sum >= @player.health
+        @player_turns << (@player.power * rand(1.0..2.0)).round
+        break if @player_turns.sum >= @opponent.health
+
+        @opponent_turns << (@opponent.power * rand(1.0..2.0)).round
+      end
+      @fight.save
+    end
+
+    (@opponent.health - @player_turns.sum).positive? ? @winner = @opponent : @winner = @player
   end
 
   def new
@@ -24,9 +40,13 @@ class FightsController < ApplicationController
     end
   end
 
+  def arena
+    @fight = Fight.find(params[:id])
+  end
+
   private
 
   def fight_params
-    params.require(:fight).permit(:player, :opponent, :id)
+    params.require(:fight).permit(:player, :opponent)
   end
 end
