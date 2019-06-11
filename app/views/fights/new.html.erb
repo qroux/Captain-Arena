@@ -1,28 +1,9 @@
 <div class="container">
   <div class="border rounded mt-5 p-5 text-center">
     <div class="mb-5">
-      <h1><i class="fas fa-skull-crossbones"></i> Choose the two Opponents <i class="fas fa-skull-crossbones"></i></h1>
-      <h4> Prepare to fight !</h4>
-    </div>
-    <%= simple_form_for [@fight] do |f| %>
-    <div class="border rounded mt-5 p-5">
-      <%= f.input :player, collection: @fighters, label: "You" %>
-      <%= f.input :player_weapon, collection: @weapons, label: "Your weapon", default: @weapons.first %>
-    </div>
-    <div class="border rounded mt-5 p-5">
-      <%= f.input :opponent, collection: @fighters %>
-      <%= f.input :opponent_weapon, collection: @weapons, label: "Opponent weapon", default: @weapons.first %>
-    </div>
-    <%= f.submit "Fight", class: "btn btn-danger" %>
-    <% end %>
-  </div>
-</div>
-<div class="container">
-  <div class="border rounded mt-5 p-5 text-center">
-    <div class="mb-5">
       <h1><i class="fas fa-dumbbell"></i> Fighter Academy <i class="fas fa-dumbbell"></i></h1>
       <div class="mt-5">
-        <h4>Create your own champion and join the fight !</h4>
+        <h4>You can create your own champion !</h4>
       </div>
     </div>
     <%= link_to new_fighter_path do %>
@@ -30,6 +11,26 @@
     <% end %>
   </div>
 </div>
+<div class="container">
+  <div class="border rounded mt-5 p-5 text-center">
+    <div class="mb-5">
+      <h1><i class="fas fa-skull-crossbones"></i> Choose the two Opponents <i class="fas fa-skull-crossbones"></i></h1>
+      <h4> Prepare to fight !</h4>
+    </div>
+    <%= simple_form_for [@fight] do |f| %>
+    <div class="border rounded mt-5 p-5">
+      <%= f.input :player, collection: @fighters, label: "Choose your fighter" %>
+      <%= f.input :player_weapon, collection: @weapons, label: "Choose your weapon", default: @weapons.first %>
+    </div>
+    <div class="border rounded mt-5 p-5">
+      <%= f.input :opponent, label: "Choose your opponent", collection: @fighters %>
+      <%= f.input :opponent_weapon, collection: @weapons, label: "Choose Opponent weapon", default: @weapons.first %>
+    </div>
+    <%= f.submit "Fight", class: "btn btn-danger" %>
+    <% end %>
+  </div>
+</div>
+
 <div class="container">
   <div class="mt-5 p5 text-center">
     <%= link_to root_path do %>
