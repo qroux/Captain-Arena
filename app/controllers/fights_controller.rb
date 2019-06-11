@@ -12,7 +12,7 @@ class FightsController < ApplicationController
 
     if @player_turns.empty?
       until @player_turns.sum >= @opponent.health || @opponent_turns.sum >= @player.health
-        @player_turns << (@player.power * rand(1.0..2.0)).round
+        @player_turns << (((@player.power + @fight.player_weapon.attack) * rand(1.0..2.0)) - @fight.opponent_weapon.defense).round
         break if @player_turns.sum >= @opponent.health
 
         @opponent_turns << (@opponent.power * rand(1.0..2.0)).round
@@ -42,10 +42,6 @@ class FightsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def arena
-    @fight = Fight.find(params[:id])
   end
 
   private
