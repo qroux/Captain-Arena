@@ -5,11 +5,15 @@
       <h4> Prepare to fight !</h4>
     </div>
     <%= simple_form_for [@fight] do |f| %>
-    <%= f.input :player, collection: @fighters, label: "You" %>
-    <%= f.input :player_weapon, collection: @weapons, label: "Your weapon" %>
-    <%= f.input :opponent, collection: @fighters %>
-    <%= f.input :opponent_weapon, collection: @weapons, label: "Opponent weapon" %>
-    <%= f.submit "Fight !", class: "btn btn-danger" %>
+    <div class="border rounded mt-5 p-5">
+      <%= f.input :player, collection: @fighters, label: "You" %>
+      <%= f.input :player_weapon, collection: @weapons, label: "Your weapon", default: @weapons.first %>
+    </div>
+    <div class="border rounded mt-5 p-5">
+      <%= f.input :opponent, collection: @fighters %>
+      <%= f.input :opponent_weapon, collection: @weapons, label: "Opponent weapon", default: @weapons.first %>
+    </div>
+    <%= f.submit "Fight", class: "btn btn-danger" %>
     <% end %>
   </div>
 </div>
@@ -29,10 +33,10 @@
 <div class="container">
   <div class="mt-5 p5 text-center">
     <%= link_to root_path do %>
-    <div class="btn btn-secondary">Home</div>
+      <div class="btn btn-secondary">Home</div>
     <% end %>
     <%= link_to fights_path do %>
-    <div class="btn btn-secondary">Back</div>
+      <div class="btn btn-secondary">Back</div>
     <% end %>
   </div>
 </div>
