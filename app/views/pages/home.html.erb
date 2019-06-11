@@ -5,8 +5,8 @@
       <h2>Who would win?</h2>
       <p>Create your fighter and let's find out!</p>
     </div>
-    <div class="btn btn-danger btn-lg mt-5">
-      <%= link_to "Enter the Arena !", fights_path, style: "color: #F4F4F4"  %>
-    </div>
+    <%= link_to fights_path do %>
+    <div class="btn btn-danger btn-lg mt-5"> Enter the Arena </div>
+    <% end %>
   </div>
 </div>

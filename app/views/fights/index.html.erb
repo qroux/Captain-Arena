@@ -17,8 +17,8 @@
         <% end %>
       <% end %>
     </div>
-    <div class="mt-5 btn btn-danger">
-      <%= link_to "New Fight !", new_fight_path, style: 'color:#F4F4F4'  %>
-    </div>
+    <%= link_to new_fight_path do %>
+      <div class="mt-5 btn btn-danger"> New Fight </div>
+    <% end %>
   </div>
 </div>
