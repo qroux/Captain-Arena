@@ -6,7 +6,9 @@
     </div>
     <%= simple_form_for [@fight] do |f| %>
     <%= f.input :player, collection: @fighters, label: "You" %>
+    <%= f.input :player_weapon, collection: @weapons, label: "Your weapon" %>
     <%= f.input :opponent, collection: @fighters %>
+    <%= f.input :opponent_weapon, collection: @weapons, label: "Opponent weapon" %>
     <%= f.submit "Fight !", class: "btn btn-danger" %>
     <% end %>
   </div>
