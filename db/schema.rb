@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_170727) do
+ActiveRecord::Schema.define(version: 2019_06_11_145346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,10 +31,24 @@ ActiveRecord::Schema.define(version: 2019_06_10_170727) do
     t.datetime "updated_at", null: false
     t.integer "player_turns", default: [], array: true
     t.integer "opponent_turns", default: [], array: true
+    t.bigint "player_weapon_id"
+    t.bigint "opponent_weapon_id"
     t.index ["opponent_id"], name: "index_fights_on_opponent_id"
+    t.index ["opponent_weapon_id"], name: "index_fights_on_opponent_weapon_id"
     t.index ["player_id"], name: "index_fights_on_player_id"
+    t.index ["player_weapon_id"], name: "index_fights_on_player_weapon_id"
+  end
+
+  create_table "weapons", force: :cascade do |t|
+    t.string "name"
+    t.integer "attack"
+    t.integer "defense"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "fights", "fighters", column: "opponent_id"
   add_foreign_key "fights", "fighters", column: "player_id"
+  add_foreign_key "fights", "weapons", column: "opponent_weapon_id"
+  add_foreign_key "fights", "weapons", column: "player_weapon_id"
 end

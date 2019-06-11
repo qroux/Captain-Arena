@@ -48,6 +48,6 @@ class FightsController < ApplicationController
   private
 
   def fight_params
-    params.require(:fight).permit(:player, :opponent)
+    params.require(:fight).permit(:player, :opponent, :player_weapon, :opponent_weapon)
   end
 end
