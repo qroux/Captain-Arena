@@ -12,7 +12,7 @@ class FightsController < ApplicationController
 
     if @player_turns.empty?
       until @player_turns.sum >= @opponent.health || @opponent_turns.sum >= @player.health
-        @player_turns << (@player.power * rand(1.0..2.0)).round
+        @player_turns << (((@player.power + @fight.player_weapon.attack) * rand(1.0..2.0)) - @fight.opponent_weapon.defense).round
         break if @player_turns.sum >= @opponent.health
 
         @opponent_turns << (@opponent.power * rand(1.0..2.0)).round
@@ -26,14 +26,17 @@ class FightsController < ApplicationController
   def new
     @fight = Fight.new
     @fighters = Fighter.all
+    @weapons = Weapon.all
   end
 
   def create
     # @fight = Fight.new(fight_params) doesn't work, type mismatch, expect id, receive integer or string
     @fight = Fight.new
-    @fighters = Fighter.all #fix simple_form buf when render :new
+    @fighters = Fighter.all #fix simple_form bug when render :new
     @fight.player = Fighter.find_by(id: fight_params[:player])
+    @fight.player_weapon = Weapon.find_by(id: fight_params[:player_weapon])
     @fight.opponent = Fighter.find_by(id: fight_params[:opponent])
+    @fight.opponent_weapon = Weapon.find_by(id: fight_params[:opponent_weapon])
     if @fight.save
       redirect_to fight_path(@fight)
     else
@@ -41,13 +44,9 @@ class FightsController < ApplicationController
     end
   end
 
-  def arena
-    @fight = Fight.find(params[:id])
-  end
-
   private
 
   def fight_params
-    params.require(:fight).permit(:player, :opponent)
+    params.require(:fight).permit(:player, :opponent, :player_weapon, :opponent_weapon)
   end
 end
