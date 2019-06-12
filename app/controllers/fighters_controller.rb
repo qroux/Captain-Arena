@@ -9,6 +9,7 @@ class FightersController < ApplicationController
 
   def create
     @fighter = Fighter.new(fighter_params)
+    @fighter.luck = rand(1.0..2.5)
     @fighter.name = @fighter.name.downcase.capitalize
     if @fighter.save
       redirect_to fighters_path
@@ -44,6 +45,6 @@ class FightersController < ApplicationController
   private
 
   def fighter_params
-    params.require(:fighter).permit(:name, :health, :power, :photo)
+    params.require(:fighter).permit(:name, :health, :power, :photo, :luck)
   end
 end
