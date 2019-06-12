@@ -7,4 +7,6 @@ class Fight < ApplicationRecord
 
   validates :player, presence: true
   validates :opponent, presence: true
+  validates :player_weapon, presence: true
+  validates :opponent_weapon, presence: true
 end
