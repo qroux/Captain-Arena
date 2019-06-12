@@ -29,6 +29,12 @@ class FightsController < ApplicationController
           @opponent_turns << (o_damage - p_resilience)
         end
       end
+
+      @player.match_count += 1
+      @opponent.match_count += 1
+      (@opponent.health - @player_turns.sum).positive? ? @opponent.win += 1 : @player.win += 1
+      @player.save
+      @opponent.save
       @fight.save
     end
 
