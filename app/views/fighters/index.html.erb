@@ -9,30 +9,31 @@
         </div>
         <div class="card-body">
           <h5 class="card-title"><%= fighter.name %></h5>
-          <p class="card-text">Health: <%= fighter.health %> <br>Power: <%= fighter.power %> </p>
-          <div class="mt-5 btn btn-secondary">
-            <%= link_to edit_fighter_path(fighter), style: 'color:#F4F4F4' do %>
-            <i class="fas fa-tools"> Edit </i>
-            <% end %>
-          </div>
-          <div class="mt-5 btn btn-secondary">
-            <%= link_to fighter_path(fighter), method: :delete, data: { confirm: "Are you sure?" }, style: 'color:#F4F4F4' do %>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-            <% end %>
-          </div>
+          <p class="card-text">Health: <%= fighter.health %> <br>Power: <%= fighter.power %></p>
+          <% if fighter.match_count == 0 %>
+            <p class="card-text"> Winrate: No fight yet!</p>
+          <% else %>
+            <p class="card-text"> Winrate: <%= ((fighter.win).fdiv(fighter.match_count) * 100).round %> %</p>
+          <% end %>
+          <%= link_to edit_fighter_path(fighter) do %>
+            <div class="btn btn-secondary mt-5">
+              <i class="fas fa-tools"> Edit </i>
+            </div>
+          <% end %>
+          <%= link_to fighter_path(fighter), method: :delete, data: { confirm: "Are you sure?" } do %>
+            <div class="btn btn-secondary mt-5">
+              <i class="fas fa-trash" aria-hidden="true"></i>
+            </div>
+          <% end %>
         </div>
       </div>
       <% end %>
     </div>
     <%= link_to new_fighter_path, style: 'color:#F4F4F4' do %>
-      <div class="mt-5 btn btn-success">
-        <i class="fa fa-plus"> New fighter</i>
-      </div>
+      <div class="mt-5 btn btn-success"> New fighter </div>
     <% end %>
     <%= link_to new_fight_path, style: 'color:#F4F4F4' do %>
-      <div class="mt-5 btn btn-danger">
-        <i class="fa fa-plus"> New fight</i>
-      </div>
+      <div class="mt-5 btn btn-danger"> New fight </div>
     <% end %>
   </div>
 </div>
