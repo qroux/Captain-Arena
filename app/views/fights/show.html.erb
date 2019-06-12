@@ -1,8 +1,10 @@
 <div class="container">
   <div class="border rounded mt-5 p-5 text-center">
-    <h1><%= @fight.player.name %> VS <%= @fight.opponent.name %></h1>
+    <div class="border rounded m-2 p-2">
+      <h1><%= @fight.player.name %> VS <%= @fight.opponent.name %></h1>
+    </div>
     <div>
-      <ul class="list-unstyled text-left">
+      <ul class="list-unstyled text-left mt-5">
         <h2><%= @fight.player.name %> -
           <% if @fight.player_weapon.name == "Sword" %>
             <i class="fas fa-utensils"></i>
@@ -16,7 +18,7 @@
         <li>- <%= player_turn %> dmg</li>
         <% end %>
       </ul>
-      <ul class="list-unstyled text-right">
+      <ul class="list-unstyled text-right  mt-5">
         <h2><%= @fight.opponent.name %> -
           <% if @fight.opponent_weapon.name == "Sword" %>
             <i class="fas fa-utensils"></i>
@@ -31,11 +33,11 @@
         <% end %>
       </ul>
     </div>
-    <div>
+    <div class="border rounded mt-5 p-3" >
       <h2><i class="fas fa-trophy"></i> Winner : <%= @winner.name %> !</h2>
     </div>
     <%= link_to fights_path do %>
-      <div class="btn btn-primary mt-5"> Return </div>
+      <div class="btn btn-secondary mt-5"> Return </div>
     <% end %>
   </div>
 </div>

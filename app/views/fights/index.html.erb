@@ -1,6 +1,9 @@
 <div class="container">
   <div class="border rounded mt-5 p-5 text-center">
     <h1><i class="fas fa-skull-crossbones"></i> Fights history <i class="fas fa-skull-crossbones"></i></h1>
+    <%= link_to new_fight_path do %>
+      <div class="mt-5 btn btn-danger"> New Fight </div>
+    <% end %>
     <div class="d-flex flex-wrap justify-content-between">
       <% @fights.each do |fight| %>
         <%= link_to fight_path(fight), style: 'color:#000000' do %>
@@ -17,8 +20,5 @@
         <% end %>
       <% end %>
     </div>
-    <%= link_to new_fight_path do %>
-      <div class="mt-5 btn btn-danger"> New Fight </div>
-    <% end %>
   </div>
 </div>

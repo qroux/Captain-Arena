@@ -6,10 +6,10 @@
     </div>
     <%= simple_form_for [@fighter], url: fighter_path do |f| %>
     <%= f.input :name %>
-    <%= f.input :health, collection: (100..150) %>
+    <%= f.input :health, collection: (100..150), default: 100 %>
     <%= f.input :power, collection: (10..50) %>
     <%= f.input :photo %>
-    <%= f.submit "Update your fighter", class: "btn btn-primary" %>
+    <%= f.submit "Update this fighter", class: "btn btn-success" %>
     <% end %>
   </div>
 </div>

@@ -4,4 +4,7 @@ class Fight < ApplicationRecord
 
   belongs_to :player_weapon, class_name: "Weapon", optional: true
   belongs_to :opponent_weapon, class_name: "Weapon", optional: true
+
+  validates :player, presence: true
+  validates :opponent, presence: true
 end
