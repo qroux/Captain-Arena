@@ -13,7 +13,7 @@ class FightsController < ApplicationController
     if @player_turns.empty?
       until @player_turns.sum >= @opponent.health || @opponent_turns.sum >= @player.health
         p_damage = ((@player.power + @fight.player_weapon.attack) * rand(1.0..@player.luck)).round
-        o_resilience = (@fight.player_weapon.defense * rand(1.0..@player.luck)).round
+        o_resilience = (@fight.opponent_weapon.defense * rand(1.0..@player.luck)).round
         if o_resilience >= p_damage
           @player_turns << 0
         else
