@@ -33,10 +33,10 @@ class FightersController < ApplicationController
 
   def destroy
     @fighter = Fighter.find(params[:id])
-    @historya = Fight.where(player_id: params[:id])
-    @historya.destroy_all
-    @historyb = Fight.where(opponent_id: params[:id])
-    @historyb.destroy_all
+    @player_history = Fight.where(player_id: params[:id])
+    @player_history.destroy_all
+    @opponent_history = Fight.where(opponent_id: params[:id])
+    @opponent_history.destroy_all
     @fighter.destroy
     redirect_to fighters_path
   end

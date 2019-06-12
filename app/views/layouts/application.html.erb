@@ -10,6 +10,17 @@
   </head>
 
   <body>
+    <div class="d-flex flex-wrap justify-content-center bg-danger">
+      <%= link_to root_path do %>
+        <div class="border rounded m-1 p-2 btn btn-light">Home Page</div>
+      <% end %>
+      <%= link_to fights_path do %>
+        <div class="border rounded m-1 p-2 btn btn-light">Fight History</div>
+      <% end %>
+      <%= link_to fighters_path do %>
+        <div class="border rounded m-1 p-2 btn btn-light">Create a Fighter</div>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
