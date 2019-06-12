@@ -30,7 +30,7 @@ RSpec.describe Fighter, type: :model do
     expect(Fighter.count).to eq(0)
   end
 
-  it "CRUD + Associations: Fighter with fights history destroy should work" do
+  it "CRUD + Associations: Fighter.destroy with fights history should work (dependent: destroy)" do
     Fighter.create(name: "Fighter 1", health: 100, power: 10, luck: rand(1.0..2.5))
     Fighter.create(name: "Fighter 2", health: 150, power: 20, luck: rand(1.0..2.5))
     Weapon.create(name: "fists", attack: 0, defense: 0)
